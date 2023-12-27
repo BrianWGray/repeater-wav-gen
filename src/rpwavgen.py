@@ -40,7 +40,7 @@ def parse_args():
     parser = argparse.ArgumentParser(
         description="Repeater WAV Generator",
         formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog="See")
+        epilog="See: ")
 
     # define option groups
     wav_input_grp = parser.add_mutually_exclusive_group()
@@ -219,7 +219,7 @@ def generate_wav(pargs, wav_format=WAV_FORMAT) -> None:
     """
     temp_speech = 'temp_speech.aiff'
 
-    text_to_speech(pargs.text, temp_speech, gain=pargs.gain, rate=pargs.rate)
+    text_to_speech(pargs.text, temp_speech, gain=pargs.gain, rate=pargs.rate, narrator=pargs.narrator)
     convert_to_wav(temp_speech, f"{pargs.output}/{FILE_NAME}")
     remove_file(f"{pargs.output}/{temp_speech}")
     validate_wav(f"{pargs.output}/{FILE_NAME}")
