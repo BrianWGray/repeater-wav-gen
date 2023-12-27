@@ -52,9 +52,11 @@ def parse_args():
                                help="Input WAV file to convert or validate")
 
     wav_convert_grp.add_argument("-c", "--convert",
-                                 help="Convert a WAV file to proper format")
+                                action="store_true",
+                                help="Convert a WAV file to proper format")
     wav_convert_grp.add_argument("-v", "--validate",
-                                 help="Validate a WAV file")
+                                action="store_true",
+                                help="Validate a WAV file")
 
     parser.add_argument("-o", "--output",
                         help="Output WAV file directory location",
