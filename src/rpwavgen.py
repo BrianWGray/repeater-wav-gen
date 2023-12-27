@@ -67,9 +67,8 @@ def parse_args():
                         help="Gain of WAV file",
                         default=1)
     parser.add_argument("-r", "--rate",
-                        help="Rate of WAV file",
-                        type=int,
-                        choices=range(1,300),
+                        help="Rate of WAV file (1-300)",
+                        type=check_rate,
                         default=RATE)
     parser.add_argument("-n", "--narrator",
                         help="Narator of WAV file",
@@ -78,6 +77,18 @@ def parse_args():
 
     return parser.parse_args()
 
+def check_rate(value):
+    min_rate = 1
+    max_rate = 300
+    try:
+        ivalue = int(value)
+    except ValueError:
+        raise argparse.ArgumentTypeError(f"{value} is an invalid rate. Use an integer.")
+
+    if min_rate <= ivalue <= max_rate:
+        return ivalue
+    else:
+        raise argparse.ArgumentTypeError(f"Rate must be between {min_rate} and {max_rate} default is {RATE}")
 
 def check_gain(value) -> float:
     """
