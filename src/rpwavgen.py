@@ -31,6 +31,7 @@ WAV_FORMAT = {'filename':FILE_NAME,
               'channel':1,
               'modulation':'PCM'}
 NARRATOR = 'com.apple.voice.enhanced.en-US.Allison'
+RATE = 175
 
 
 def parse_args():
@@ -69,7 +70,7 @@ def parse_args():
                         help="Rate of WAV file",
                         type=int,
                         choices=range(1,300),
-                        default=100)
+                        default=RATE)
     parser.add_argument("-n", "--narrator",
                         help="Narator of WAV file",
                         choices=list_voices(),
